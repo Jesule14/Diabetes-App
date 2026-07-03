@@ -1,4 +1,4 @@
-// Memoria inicial local en el iPhone
+// Memoria inicial local en el iPhone / Ordenador
 if (!localStorage.getItem("db_alimentos")) localStorage.setItem("db_alimentos", JSON.stringify([]));
 if (!localStorage.getItem("db_registros")) localStorage.setItem("db_registros", JSON.stringify([]));
 
@@ -18,6 +18,8 @@ function actualizarApp() {
 function cambiarTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+  
+  // Conecta directamente con la estructura limpia del index.html externo
   document.getElementById(`tab-${tabId}`).classList.add('active');
   document.getElementById(`btn-${tabId}`).classList.add('active');
 }
@@ -259,8 +261,6 @@ function generarRecomendacionInteligente() {
     return;
   }
 
-  // Buscar el "mejor" registro (el que tenga menor variabilidad postprandial y termine lo más estable posible)
-  // Evaluamos el éxito si las glucemias de la +2h y +4h están lo más cercanas a 100-140 mg/dL posibles
   let mejorRegistro = null;
   let puntuacionMinima = 999;
 
@@ -326,7 +326,7 @@ function actualizarPanelInicio() {
       pendCard.appendChild(div);
     });
   } else {
-    pendCard.innerHTML = "No tienes mediciones postprandiales pendientes de las últimas 5 horas.";
+    pendCard.innerHTML = "No tienes mediciones postprandiales pendientes de las últimas 5 hours.";
   }
 }
 
